@@ -22,6 +22,9 @@ app=FastAPI(
     lifespan=lifespan
 )
 
+setup_logging(app)
+
+
 app.add_middleware(RequestIDMiddleware)
 
 app.add_exception_handler(global_exception_handler)
