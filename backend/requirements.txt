@@ -1,31 +1,29 @@
 fastapi
 uvicorn[standard]
-
 python-dotenv
 pydantic-settings
 
-
-# Database
 sqlalchemy
 asyncpg
 alembic
 
-
-# Redis
 redis
 
-
-# Observability
 logfire
 logfire[fastapi]
 logfire[sqlalchemy]
 
-
-# Security
-python-jose
+python-jose[cryptography]
 passlib[bcrypt]
 
-
-# Utils
 httpx
 python-multipart
+email-validator
+
+pytest
+pytest-asyncio
+
+black
+ruff
+
+gunicorn
