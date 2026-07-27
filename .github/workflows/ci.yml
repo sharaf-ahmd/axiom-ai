@@ -39,6 +39,16 @@ jobs:
         working-directory: backend
         env:
          PYTHONPATH: .
+         APP_NAME: ${{ secrets.APP_NAME }}
+         ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+         POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+         POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+         DATABASE_URL: ${{ secrets.DATABASE_URL }}
+         REDIS_URL: ${{ secrets.REDIS_URL }}
+         LOGFIRE_TOKEN: ${{ secrets.LOGFIRE_TOKEN }}
+         JWT_SECRET: ${{ secrets.JWT_SECRET }}
+         JWT_ALGORITHM: ${{ secrets.JWT_ALGORITHM }}
         run:
           pytest
 
