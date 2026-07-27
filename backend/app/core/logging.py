@@ -10,4 +10,6 @@ def setup_logging(app=None):
     if app is not None:
         logfire.instrument_fastapi(app)
     logfire.instrument_sqlalchemy()
+
+
     
