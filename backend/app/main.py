@@ -7,9 +7,6 @@ from app.core.exceptions import global_exception_handler
 from contextlib import asynccontextmanager
 
 
-setup_logging()
-
-
 @asynccontextmanager
 async def lifespan(app:FastAPI):
     print("Axiom AI starting...")
