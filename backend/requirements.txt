@@ -1,0 +1,31 @@
+fastapi
+uvicorn[standard]
+
+python-dotenv
+pydantic-settings
+
+
+# Database
+sqlalchemy
+asyncpg
+alembic
+
+
+# Redis
+redis
+
+
+# Observability
+logfire
+logfire[fastapi]
+logfire[sqlalchemy]
+
+
+# Security
+python-jose
+passlib[bcrypt]
+
+
+# Utils
+httpx
+python-multipart
