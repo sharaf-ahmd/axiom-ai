@@ -14,6 +14,9 @@ services:
 
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    
+    networks:
+      - axiom-network  
 
     restart: always
     healthcheck:
@@ -35,6 +38,9 @@ services:
     volumes:
       - redis_data:/data
 
+    networks:
+      - axiom-network  
+
     restart: always
 
   backend:
@@ -54,9 +60,16 @@ services:
       redis:
         condition: service_started
 
+      networks:
+      - axiom-network     
+    
     restart: always
   
 
 volumes:
   postgres_data:
   redis_data:
+
+networks:
+  axiom-network:
+    driver: bridge
