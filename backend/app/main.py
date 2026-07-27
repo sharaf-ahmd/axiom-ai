@@ -35,6 +35,7 @@ async def root():
     return {
 
         "name":"Axiom AI",
+        
         "status":"running"
 
     }
