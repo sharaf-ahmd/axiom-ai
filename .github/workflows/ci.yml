@@ -34,27 +34,6 @@ jobs:
           pip install -r requirements.txt
 
 
-      - name: Validate DATABASE_URL format
-        working-directory: backend
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: |
-          python3 - <<'EOF'
-          import os
-          from sqlalchemy.engine import make_url
-
-          url = os.environ.get("DATABASE_URL", "")
-          print("Length:", len(url))
-          print("Starts with:", url[:20] if url else "(empty)")
-          print("Has leading/trailing whitespace:", url != url.strip())
-          print("Contains literal quote chars:", '"' in url or "'" in url)
-
-          try:
-              parsed = make_url(url)
-              print("Parsed OK. Driver:", parsed.drivername, "Host:", parsed.host, "DB:", parsed.database)
-          except Exception as e:
-              print("Parse failed:", e)
-          EOF
 
       - name: Run tests
         working-directory: backend

@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 from app.config import settings
-from app.core.logging import setup_logging
 from app.api.health import router as health_router
-from app.core.middleware import RequestIDMiddleware
-from app.core.exceptions import global_exception_handler
 from contextlib import asynccontextmanager
+
+from app.core import (
+    setup_logging,
+    RequestIDMiddleware,
+    global_exception_handler
+    )
 
 
 @asynccontextmanager

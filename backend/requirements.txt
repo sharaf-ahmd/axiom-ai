@@ -27,3 +27,4 @@ black
 ruff
 
 gunicorn
+psycopg2-binary
