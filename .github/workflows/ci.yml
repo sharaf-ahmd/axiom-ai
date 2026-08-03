@@ -50,7 +50,12 @@ jobs:
       - name: Run migrations
         working-directory: backend
         env:
+         ENVIRONMENT: test
          DATABASE_URL: postgresql+asyncpg://axiom:password@localhost:5432/axiom_test
+         REDIS_URL: redis://localhost:6379
+         LOGFIRE_TOKEN: test
+         JWT_SECRET: testsecret
+         JWT_ALGORITHM: HS256
         run:
          alembic upgrade head
     
