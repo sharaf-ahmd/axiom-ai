@@ -50,7 +50,7 @@ jobs:
       - name: Run migrations
         working-directory: backend
         env:
-        DATABASE_URL: postgresql+asyncpg://axiom:password@localhost:5432/axiom_test
+         DATABASE_URL: postgresql+asyncpg://axiom:password@localhost:5432/axiom_test
         run:
          alembic upgrade head
     
