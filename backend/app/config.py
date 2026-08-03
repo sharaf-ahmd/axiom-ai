@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+import os
 
 class Settings(BaseSettings):
 
@@ -17,7 +17,11 @@ class Settings(BaseSettings):
 
     JWT_ALGORITHM: str = "HS256"
 
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
-
+    model_config = SettingsConfigDict(
+        env_file=os.getenv(
+            "ENV_FILE",
+            ".env"
+        )
+    )
 
 settings = Settings()

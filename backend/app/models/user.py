@@ -23,7 +23,7 @@ class User(Base):
         nullable=True
     )
 
-    emai: Mapped[str]=mapped_column(
+    email: Mapped[str]=mapped_column(
         String(225),
         unique=True,
         index=True
