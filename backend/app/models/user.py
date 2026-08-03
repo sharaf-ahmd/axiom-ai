@@ -14,6 +14,7 @@ class User(Base):
     __tablename__="users"
 
     id: Mapped[str]=mapped_column(
+        String(36),
         primary_key=True,
         default=lambda:str(uuid.uuid4())
     )
@@ -23,21 +24,26 @@ class User(Base):
         nullable=True
     )
 
-    email: Mapped[str]=mapped_column(
-        String(225),
-        unique=True,
-        index=True
+    email: Mapped[str] = mapped_column(
+    String(225),
+    unique=True,
+    index=True,
+    nullable=False
+)
+
+    hashed_password: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False
     )
 
-    hashed_password: Mapped[str]
-
     is_active: Mapped[bool] = mapped_column(
+        Boolean,
         default=True
     )
 
     is_verified: Mapped[bool] = mapped_column(
         Boolean,
-        default=False
+        default=True
     )
 
     created_at: Mapped[DateTime]=mapped_column(
