@@ -18,10 +18,7 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
 
     model_config = SettingsConfigDict(
-        env_file=os.getenv(
-            "ENV_FILE",
-            ".env"
-        )
+        env_file=".env"
     )
 
 settings = Settings()

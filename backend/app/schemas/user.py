@@ -1,10 +1,9 @@
-import uuid
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
+
 
 class UserResponse(BaseModel):
-    id: uuid.UUID
+    model_config = ConfigDict(from_attributes=True)
+    id: str
     email: EmailStr
     full_name: str | None
     is_active: bool
-    class config:
-        from_attribute = True

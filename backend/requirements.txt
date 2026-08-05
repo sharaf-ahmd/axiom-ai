@@ -14,8 +14,8 @@ logfire[fastapi]
 logfire[sqlalchemy]
 
 python-jose[cryptography]
-passlib[bcrypt]
-bcrypt==4.1.3
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
 
 httpx
 python-multipart

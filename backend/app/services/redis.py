@@ -3,7 +3,7 @@ from app.config import settings
 
 redis_client=redis.from_url(
     settings.REDIS_URL,
-    decode_response=True
+    decode_responses=True
 )
 
 async def redis_health():

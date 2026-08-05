@@ -61,6 +61,11 @@ class AuthService:
         ):
             raise ValueError("Invalid email or password")
 
+        if not user.is_active:
+            raise ValueError(
+            "User account disabled"
+            )
+        
         token = create_access_token(
             {
                 "sub":str(user.id)

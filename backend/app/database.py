@@ -9,8 +9,7 @@ from app.config import settings
 engine=create_async_engine(
     settings.DATABASE_URL,
     echo=False,
-    pool_pre_ping=True
-    
+    pool_pre_ping=True   
 )
 
 SessionLocal=async_sessionmaker(
@@ -19,6 +18,5 @@ SessionLocal=async_sessionmaker(
 )
 
 async def get_db():
-
     async with SessionLocal() as session:
         yield session

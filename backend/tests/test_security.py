@@ -21,3 +21,8 @@ def test_jwt():
     payload= decode_access_token(token)
 
     assert payload["user_id" ]== "123"
+
+    from app.core.security import (
+    hash_password,
+    verify_password
+)
