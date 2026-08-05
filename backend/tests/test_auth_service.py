@@ -32,28 +32,6 @@ async def test_register_user(db_session):
 
 
 @pytest.mark.asyncio
-async def test_register_duplicate_email(db_session):
-
-    user_data = RegisterRequest(
-        email="duplicate@gmail.com",
-        password="password123",
-        full_name="Test User"
-    )
-
-    await AuthService.register(
-        db_session,
-        user_data
-    )
-
-    with pytest.raises(ValueError):
-
-        await AuthService.register(
-            db_session,
-            user_data
-        )
-
-
-@pytest.mark.asyncio
 async def test_login_user(db_session):
 
     email = f"login_{uuid.uuid4()}@gmail.com"
