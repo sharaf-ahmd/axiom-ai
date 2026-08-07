@@ -61,9 +61,6 @@ async def test_login_user(db_session):
 
 
     assert token is not None
-
     assert isinstance(token, dict)
-
     assert "access_token" in token
-
     assert "refresh_token" in token
