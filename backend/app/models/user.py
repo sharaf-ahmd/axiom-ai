@@ -2,12 +2,19 @@ import uuid
 from sqlalchemy import (
     String,
     Boolean,
-    DateTime
+    DateTime,
+    Enum as SQLEnum
 )
 
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
 from app.models.base import Base
+from enum import Enum
+
+class UserRole(str, Enum):
+    USER = "user"
+    ADMIN = "admin"
+    
 
 class User(Base):
 
@@ -36,6 +43,11 @@ class User(Base):
         nullable=False
     )
 
+    refresh_token: Mapped[str | None] = mapped_column(
+            String(225),
+            nullable=True
+        )
+
     is_active: Mapped[bool] = mapped_column(
         Boolean,
         default=True
@@ -56,3 +68,11 @@ class User(Base):
         server_default=func.now(),
         onupdate=func.now()
     )
+
+
+    role: Mapped[UserRole] = mapped_column(
+        SQLEnum(UserRole,name="user_role_enum"),
+        default=UserRole.USER,
+        nullable=False
+        )
+    

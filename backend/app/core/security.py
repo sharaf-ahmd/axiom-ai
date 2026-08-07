@@ -19,6 +19,7 @@ def verify_password(plain_password:str, hashed_password:str)-> bool:
 
 ALGORITHM = settings.JWT_ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+REFRESH_TOKEN_EXPIRE_DAYS = 7
 
 
 def create_access_token(data: dict):
@@ -47,3 +48,29 @@ def decode_access_token(token: str):
 
     except JWTError:
         return None
+
+def create_refresh_token(data: dict):
+
+    to_encode = data.copy()
+    expire = datetime.now(timezone.utc) + timedelta(
+        days=REFRESH_TOKEN_EXPIRE_DAYS
+    )    
+
+    to_encode.update({
+        "exp":expire,
+        "type":"refresh"
+    })
+
+    encoded_jwt=jwt.encode(
+        to_encode,
+        settings.JWT_SECRET,
+        algorithm=ALGORITHM
+    )
+
+    return encoded_jwt
+
+def hash_refresh_token(token:str):
+    return pwd_context.hash(token)
+
+def verify_refresh_token(token:str,hashed_token:str):
+    return pwd_context.verify(token,hashed_token)

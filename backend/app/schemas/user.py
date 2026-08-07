@@ -7,3 +7,4 @@ class UserResponse(BaseModel):
     email: EmailStr
     full_name: str | None
     is_active: bool
+    role:str

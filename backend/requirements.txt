@@ -23,6 +23,7 @@ email-validator
 
 pytest
 pytest-asyncio
+pytest-env
 
 black
 ruff

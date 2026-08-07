@@ -1,13 +1,14 @@
 from fastapi import FastAPI
 from app.config import settings
-from app.api import health_Router, auth_Router, users_router
+from app.api import health_Router, auth_Router, users_router,admin_router
 from contextlib import asynccontextmanager
-
+from app.core.exceptions import AppException
 
 from app.core import (
     setup_logging,
     RequestIDMiddleware,
-    global_exception_handler
+    global_exception_handler,
+    app_exception_handler
     )
 
 
@@ -26,6 +27,8 @@ app=FastAPI(
 setup_logging(app)
 app.add_middleware(RequestIDMiddleware)
 app.add_exception_handler(Exception, global_exception_handler)
+app.add_exception_handler(AppException,app_exception_handler)
+
 
 #-----Endpoints------#
 app.include_router(
@@ -40,7 +43,9 @@ app.include_router(
     users_router
 )
 
-
+app.include_router(
+    admin_router
+)
 
 @app.get("/")
 async def root():
