@@ -12,8 +12,8 @@ from app.models.base import Base
 from enum import Enum
 
 class UserRole(str, Enum):
-    USER = "user"
-    ADMIN = "admin"
+    USER = "USER"
+    ADMIN = "ADMIN"
     
 
 class User(Base):
@@ -71,7 +71,7 @@ class User(Base):
 
 
     role: Mapped[UserRole] = mapped_column(
-        SQLEnum(UserRole,name="user_role_enum"),
+        SQLEnum(UserRole,name="userrole"),
         default=UserRole.USER,
         nullable=False
         )
